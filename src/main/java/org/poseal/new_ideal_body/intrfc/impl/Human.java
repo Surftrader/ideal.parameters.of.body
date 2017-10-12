@@ -9,7 +9,7 @@ public class Human implements GenericParameters {
 	private int age;
 	private int height;
 	private double weight;
-	private String boneStructure;
+	private String bone;
 
 	public Human(String name, String gender, int age, int height, double weight, String boneStructure) {
 
@@ -18,7 +18,7 @@ public class Human implements GenericParameters {
 		this.age = age;
 		this.height = height;
 		this.weight = weight;
-		this.boneStructure = boneStructure;
+		this.bone = boneStructure;
 	}
 	
 	public Human() {
@@ -66,39 +66,39 @@ public class Human implements GenericParameters {
 	}
 
 	public String getBoneStructure() {
-		return boneStructure;
+		return bone;
 	}
 
 	public void setBoneStructure(String boneStructure) {
-		this.boneStructure = boneStructure;
+		this.bone = boneStructure;
 	}
 
 	public int indexMassBody() {
 		return (int) Math.round(10000 * weight / height / height);
 	}
 
-	public int[] workingArrayOfTheProteinFactor() {
+	public int[] realProteinData() {
 
 		while (true) {
 			try {
 				int[] resultArray = new int[9];
 				if (indexMassBody() < 19) {
 					for (int i = 0; i < resultArray.length; i++) {
-						resultArray[i] = dataOfTheProteinFactor[0][i];
+						resultArray[i] = proteinData[0][i];
 					}
 					return resultArray;
 				}
 				if (indexMassBody() > 45) {
 					for (int i = 0; i < resultArray.length; i++) {
-						resultArray[i] = dataOfTheProteinFactor[26][i];
+						resultArray[i] = proteinData[26][i];
 					}
 					return resultArray;
 				}
 
-				for (int i = 0; i < dataOfTheProteinFactor.length; i++) {
-					if (dataOfTheProteinFactor[i][0] == indexMassBody()) {
+				for (int i = 0; i < proteinData.length; i++) {
+					if (proteinData[i][0] == indexMassBody()) {
 						for (int j = 0; j < resultArray.length; j++) {
-							resultArray[j] = dataOfTheProteinFactor[i][j];
+							resultArray[j] = proteinData[i][j];
 						}
 						return resultArray;
 					}
@@ -109,39 +109,39 @@ public class Human implements GenericParameters {
 		}
 	}
 
-	public int standardOfTheWaterForReductionInTheWeight() {
+	public int waterReduction() {
 		return (int) (indexMassBody() >= 27 ? weight * 30 : weight * 40);
 	}
 
-	public int standardOfTheProteinForReductionInTheWeight() {
+	public int proteinReduction() {
 
 		while (true) {
 			try {
 				if (gender.equals("Ж")) {
 					if (height > 146 && height < 154) {
-						return workingArrayOfTheProteinFactor()[1];
+						return realProteinData()[1];
 					}
 					if (height > 153 && height < 164) {
-						return workingArrayOfTheProteinFactor()[2];
+						return realProteinData()[2];
 					}
 					if (height > 163 && height < 174) {
-						return workingArrayOfTheProteinFactor()[3];
+						return realProteinData()[3];
 					}
 					if (height > 173 && height < 184) {
-						return workingArrayOfTheProteinFactor()[4];
+						return realProteinData()[4];
 					}
 				} else if (gender.equals("М")) {
 					if (height > 153 && height < 164) {
-						return workingArrayOfTheProteinFactor()[5];
+						return realProteinData()[5];
 					}
 					if (height > 163 && height < 174) {
-						return workingArrayOfTheProteinFactor()[6];
+						return realProteinData()[6];
 					}
 					if (height > 173 && height < 184) {
-						return workingArrayOfTheProteinFactor()[7];
+						return realProteinData()[7];
 					}
 					if (height > 183 && height < 194) {
-						return workingArrayOfTheProteinFactor()[8];
+						return realProteinData()[8];
 					}
 				}
 			} catch (Exception e) {
@@ -150,7 +150,7 @@ public class Human implements GenericParameters {
 		}
 	}
 
-	public int standardOfTheFatForReductionInTheWeight() {
+	public int fatReduction() {
 		while (true) {
 			try {
 				double idealW = idealWeight();
@@ -172,19 +172,19 @@ public class Human implements GenericParameters {
 		}
 	}
 
-	public int standardOfTheCarbohydratesForReductionInTheWeight() {
+	public int carbohydratesReduction() {
 
-		double kilocalorie = standardOfTheKilocalorieForReductionInTheWeight();
-		double fat = standardOfTheFatForReductionInTheWeight();
-		double protein = standardOfTheProteinForReductionInTheWeight();
+		double kilocalorie = kilocalorieReduction();
+		double fat = fatReduction();
+		double protein = proteinReduction();
 
 		return (int) ((kilocalorie - (9 * fat) - (4 * protein)) / 4);
 	}
 
-	public int standardOfTheKilocalorieForReductionInTheWeight() {
+	public int kilocalorieReduction() {
 		while (true) {
 			try {
-				int result = (int) (standardOfTheProteinForReductionInTheWeight() * 13.8);
+				int result = (int) (proteinReduction() * 13.8);
 				if (gender.equals("Ж")) {
 					return result < 1200 ? result : 1200;
 				}
@@ -197,10 +197,10 @@ public class Human implements GenericParameters {
 		}
 	}
 
-	public char programOfTheControlOfTheWeight() {
+	public char programControlWeight() {
 		while (true) {
 			try {
-				int proteinFactor = standardOfTheProteinForReductionInTheWeight();
+				int proteinFactor = proteinReduction();
 
 				if (proteinFactor > 50 && proteinFactor < 76) {
 					return 'F';
@@ -223,35 +223,35 @@ public class Human implements GenericParameters {
 		}
 	}
 
-	public int standardOfTheWaterForTheControlOfTheWeight() {
+	public int waterControl() {
 		return (int) (indexMassBody() >= 27 ? idealWeight() * 30 : idealWeight() * 40);
 	}
 
-	public int standardOfTheProteinForTheControlOfTheWeight() {
-		return standardOfTheProteinForReductionInTheWeight();
+	public int proteinControl() {
+		return proteinReduction();
 	}
 
-	public int standardOfTheFatForTheControlOfTheWeight() {
+	public int fatControl() {
 		return (int) idealWeight();
 	}
 
-	public int standardOfTheCarbohydratesForTheControlOfTheWeight() {
+	public int carbohydratesControl() {
 
-		double kilocalorie = standardOfTheKilocalorieForTheControlOfTheWeight();
-		double fat = standardOfTheFatForTheControlOfTheWeight();
-		double protein = standardOfTheProteinForTheControlOfTheWeight();
+		double kilocalorie = kilocalorieControl();
+		double fat = fatControl();
+		double protein = proteinControl();
 
 		return (int) ((kilocalorie - (9 * fat) - (4 * protein)) / 4);
 	}
 
-	public int standardOfTheKilocalorieForTheControlOfTheWeight() {
-		return (int) (standardOfTheProteinForReductionInTheWeight() * 13.8);
+	public int kilocalorieControl() {
+		return (int) (proteinReduction() * 13.8);
 	}
 
-	public char programOfTheReductionOfTheWeight() {
+	public char programReductionWeight() {
 		while (true) {
 			try {
-				int proteinFactor = standardOfTheProteinForReductionInTheWeight();
+				int proteinFactor = proteinReduction();
 
 				if (proteinFactor > 50 && proteinFactor < 76) {
 					return 'A';
@@ -278,25 +278,25 @@ public class Human implements GenericParameters {
 		while (true) {
 			try {
 				if (gender.equals("Ж") && height > 146 && height < 184) {
-					if (boneStructure.equals("К")) {
-						return dataOfTheOptimalWeightForWoman[0][height - 147];
+					if (bone.equals("К")) {
+						return weightWomanData[0][height - 147];
 					}
-					if (boneStructure.equals("С")) {
-						return dataOfTheOptimalWeightForWoman[1][height - 147];
+					if (bone.equals("С")) {
+						return weightWomanData[1][height - 147];
 					}
-					if (boneStructure.equals("М")) {
-						return dataOfTheOptimalWeightForWoman[2][height - 147];
+					if (bone.equals("М")) {
+						return weightWomanData[2][height - 147];
 					}
 				}
 				if (gender.equals("М") && height > 156 && height < 194) {
-					if (boneStructure.equals("К")) {
-						return dataOfTheOptimalWeightForMan[0][height - 157];
+					if (bone.equals("К")) {
+						return weightManData[0][height - 157];
 					}
-					if (boneStructure.equals("С")) {
-						return dataOfTheOptimalWeightForMan[1][height - 157];
+					if (bone.equals("С")) {
+						return weightManData[1][height - 157];
 					}
-					if (boneStructure.equals("М")) {
-						return dataOfTheOptimalWeightForMan[2][height - 157];
+					if (bone.equals("М")) {
+						return weightManData[2][height - 157];
 					}
 				}
 			} catch (Exception e) {
@@ -310,61 +310,61 @@ public class Human implements GenericParameters {
 			try {
 				if (gender.equals("Ж")) {
 					if (age > 17 && age < 25) {
-						return dataOfTheOptimalFatForWoman[0];
+						return fatWomanData[0];
 					}
 					if (age > 24 && age < 30) {
-						return dataOfTheOptimalFatForWoman[1];
+						return fatWomanData[1];
 					}
 					if (age > 29 && age < 35) {
-						return dataOfTheOptimalFatForWoman[2];
+						return fatWomanData[2];
 					}
 					if (age > 34 && age < 40) {
-						return dataOfTheOptimalFatForWoman[3];
+						return fatWomanData[3];
 					}
 					if (age > 39 && age < 45) {
-						return dataOfTheOptimalFatForWoman[4];
+						return fatWomanData[4];
 					}
 					if (age > 44 && age < 50) {
-						return dataOfTheOptimalFatForWoman[5];
+						return fatWomanData[5];
 					}
 					if (age > 49 && age < 55) {
-						return dataOfTheOptimalFatForWoman[6];
+						return fatWomanData[6];
 					}
 					if (age > 54 && age < 60) {
-						return dataOfTheOptimalFatForWoman[7];
+						return fatWomanData[7];
 					}
 					if (age > 59) {
-						return dataOfTheOptimalFatForWoman[8];
+						return fatWomanData[8];
 					}
 				}
 
 				if (gender.equals("М")) {
 					if (age > 17 && age < 25) {
-						return dataOfTheOptimalFatForMan[0];
+						return fatManData[0];
 					}
 					if (age > 24 && age < 30) {
-						return dataOfTheOptimalFatForMan[1];
+						return fatManData[1];
 					}
 					if (age > 29 && age < 35) {
-						return dataOfTheOptimalFatForMan[2];
+						return fatManData[2];
 					}
 					if (age > 34 && age < 40) {
-						return dataOfTheOptimalFatForMan[3];
+						return fatManData[3];
 					}
 					if (age > 39 && age < 45) {
-						return dataOfTheOptimalFatForMan[4];
+						return fatManData[4];
 					}
 					if (age > 44 && age < 50) {
-						return dataOfTheOptimalFatForMan[5];
+						return fatManData[5];
 					}
 					if (age > 49 && age < 55) {
-						return dataOfTheOptimalFatForMan[6];
+						return fatManData[6];
 					}
 					if (age > 54 && age < 60) {
-						return dataOfTheOptimalFatForMan[7];
+						return fatManData[7];
 					}
 					if (age > 59) {
-						return dataOfTheOptimalFatForMan[8];
+						return fatManData[8];
 					}
 				}
 			} catch (Exception e) {
@@ -431,7 +431,7 @@ public class Human implements GenericParameters {
 		return (int) (idealW - (idealW * idealF) / 100);
 	}
 
-	public String idealLiquidWaterContent() {
+	public String idealWater() {
 		String res = "";
 		if (gender.equals("Ж")) {
 			res = "50-60 %";
@@ -442,7 +442,7 @@ public class Human implements GenericParameters {
 		return res;
 	}
 
-	public int idealBiologicalAge() {
+	public int idealAge() {
 		return (age >= 30 ? (age - 12) : 18);
 	}
 }

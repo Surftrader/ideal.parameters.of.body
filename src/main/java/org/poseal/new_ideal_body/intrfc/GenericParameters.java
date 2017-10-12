@@ -1,9 +1,9 @@
 package org.poseal.new_ideal_body.intrfc;
 
-public interface GenericParameters extends IdealParametersOfTheBody, StandardOfMacrocellsForTheControlOfTheWeight,
-		StandardOfMacrocellsForTheReductionOfTheWeight {
+public interface GenericParameters extends IdealParameters, MacrocellsControlWeight,
+		MacrocellsReductionWeight {
 
-	int[][] dataOfTheProteinFactor = { { 19, 54, 66, 80, 93, 82, 97, 107, 126 },
+	int[][] proteinData = { { 19, 54, 66, 80, 93, 82, 97, 107, 126 },
 			{ 20, 56, 70, 82, 95, 84, 98, 113, 130 }, { 21, 56, 72, 85, 97, 86, 99, 115, 133 },
 			{ 22, 59, 73, 85, 100, 87, 102, 118, 133 }, { 23, 61, 74, 88, 102, 89, 104, 119, 137 },
 			{ 24, 61, 76, 89, 104, 92, 106, 122, 140 }, { 25, 62, 77, 92, 106, 92, 107, 125, 141 },
@@ -18,25 +18,25 @@ public interface GenericParameters extends IdealParametersOfTheBody, StandardOfM
 			{ 42, 86, 106, 125, 143, 120, 140, 161, 183 }, { 43, 86, 108, 126, 146, 122, 141, 163, 185 },
 			{ 44, 88, 109, 128, 148, 125, 143, 165, 187 }, { 45, 89, 111, 130, 150, 127, 146, 168, 191 } };
 
-	int[][] dataOfTheOptimalWeightForWoman = {
+	int[][] weightWomanData = {
 			{ 51, 51, 52, 52, 53, 54, 54, 55, 55, 56, 56, 57, 58, 58, 57, 59, 59, 60, 61, 61, 62, 62, 63, 64, 64, 65,
 					66, 67, 68, 68, 69, 70, 71, 72, 73, 74, 75 },
 			{ 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 52, 52, 53, 53, 54, 54, 55, 56, 56, 57, 57, 58, 59, 60, 60, 61,
 					62, 63, 64, 64, 65, 66, 67, 68, 68, 69, 69 },
 			{ 44, 44, 45, 45, 46, 46, 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 56, 56, 57,
 					58, 58, 59, 60, 61, 62, 63, 64, 64, 65, 65 } };
-	int[][] dataOfTheOptimalWeightForMan = {
+	int[][] weightManData = {
 			{ 60, 61, 62, 63, 63, 64, 64, 65, 65, 66, 67, 67, 68, 69, 70, 71, 71, 72, 73, 74, 75, 75, 76, 77, 78, 79,
 					80, 81, 81, 82, 83, 84, 85, 86, 87, 88, 88 },
 			{ 57, 57, 58, 58, 59, 59, 60, 60, 61, 61, 62, 62, 63, 64, 65, 65, 66, 67, 68, 69, 70, 70, 71, 72, 72, 73,
 					74, 75, 76, 77, 78, 78, 79, 80, 81, 82, 82 },
 			{ 53, 53, 54, 54, 55, 55, 56, 56, 57, 57, 58, 58, 59, 60, 61, 62, 62, 64, 64, 65, 66, 66, 67, 68, 69, 70,
 					70, 71, 71, 72, 73, 74, 75, 76, 77, 78, 78 } };
-	double[] dataOfTheOptimalFatForWoman = { 22.1, 22, 22.7, 24, 25.6, 27.3, 28.2, 29.7, 30.7 };
+	double[] fatWomanData = { 22.1, 22, 22.7, 24, 25.6, 27.3, 28.2, 29.7, 30.7 };
 
-	double[] dataOfTheOptimalFatForMan = { 14.9, 16.5, 18, 19.3, 20.5, 21.5, 22.1, 22.7, 23.3 };
+	double[] fatManData = { 14.9, 16.5, 18, 19.3, 20.5, 21.5, 22.1, 22.7, 23.3 };
 	
 	int indexMassBody();
 	
-	public int[] workingArrayOfTheProteinFactor();	
+	public int[] realProteinData();	
 }

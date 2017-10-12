@@ -1,6 +1,6 @@
 package org.poseal.new_ideal_body.intrfc;
 
-public interface IdealParametersOfTheBody {
+public interface IdealParameters {
 	
 	int idealWeight(); // идеальный вес(кг)
 	
@@ -12,7 +12,7 @@ public interface IdealParametersOfTheBody {
 	
 	int idealMuscle(); // идеальная мышечная масса(кг)
 	
-	String idealLiquidWaterContent(); // идеальный % воды в огранизме
+	String idealWater(); // идеальный % воды в огранизме
 	
-	int idealBiologicalAge(); // идеальный биологический возраст
+	int idealAge(); // идеальный биологический возраст
 }
