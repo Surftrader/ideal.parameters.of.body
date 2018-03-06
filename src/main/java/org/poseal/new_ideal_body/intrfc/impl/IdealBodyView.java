@@ -60,7 +60,7 @@ public class IdealBodyView extends Application {
 
 	Text reduction = new Text("План снижения веса");
 	Text control = new Text("План контроля веса");
-	//////////
+
 	Text nutritionPlan = new Text("	План питания\n");
 	Text products = new Text("	Продукты\n");
 	Text enjoy = new Text("  Наслаждайтесь\n");
@@ -79,7 +79,6 @@ public class IdealBodyView extends Application {
 	Text planControlProtein;
 	Text planControlCallories;
 
-	// Button btnExit = new Button("Выход");
 	Button btnRecommendation;
 	Button btn;
 
@@ -92,9 +91,9 @@ public class IdealBodyView extends Application {
 
 	@Override
 	public void start(final Stage myStage) throws Exception {
-		///////// checking of the time limit :) //////////
+
 		LocalDate dateNow = LocalDate.now();
-		LocalDate dateEnd = LocalDate.of(2018, 9, 6);
+		LocalDate dateEnd = LocalDate.of(2019, 9, 6);
 
 		if (dateEnd.isBefore(dateNow)) {
 			myStage.setTitle("Внимание!");
@@ -111,14 +110,9 @@ public class IdealBodyView extends Application {
 					Platform.exit();
 				}
 			});			
-			// OR
-			//btn.setOnAction(e -> Platform.exit());
-
 			myStage.setScene(myScene);
 			myStage.show();
-		///////////////////////////////////
 		} else {
-
 			myStage.setTitle("Ideal Body");
 			rootNode = new VBox(10);
 			rootNode.setAlignment(Pos.CENTER);
@@ -155,8 +149,8 @@ public class IdealBodyView extends Application {
 			manCB.setToggleGroup(tgGender);
 			womanCB.setToggleGroup(tgGender);
 
-			manCB.setSelected(true); // по умолчанию
-			human.setGender("М");// по умолчанию
+			manCB.setSelected(true);
+			human.setGender("М");
 
 			womanCB.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -202,8 +196,8 @@ public class IdealBodyView extends Application {
 			averageBoneLabel.setToggleGroup(tgBone);
 			bigBoneLabel.setToggleGroup(tgBone);
 
-			averageBoneLabel.setSelected(true);// по умолчанию
-			human.setBoneStructure("С");// по умолчанию
+			averageBoneLabel.setSelected(true);
+			human.setBoneStructure("С");
 
 			counting = new Button("Расчет");
 
@@ -238,36 +232,44 @@ public class IdealBodyView extends Application {
 
 						myStage.centerOnScreen();
 						myStage.show();
-
 					} else {
-
 						programReduction = human.programReductionWeight();
 						programControl = human.programControlWeight();
 
-						String result = "ФИО: " + human.getName() + "\n" + "Пол: " + human.getGender() + "\n"
-								+ "Возраст: " + human.getAge() + " лет\n" + "Рост: " + human.getHeight() + " см\n"
-								+ "Костная система: " + human.getBoneStructure() + "\n" + "Вес: " + human.getWeight()
-								+ " кг\n" + "Индекс массы тела: " + human.indexMassBody() + "\n"
-								+ "---------------------------\n" + "Идеальные параметры:\n" + "Вес: "
-								+ human.idealWeight() + " кг\n" + "Жир: " + human.idealFat() + " %" + "\n"
-								+ "Внутренний жир: " + human.idealInternalFat() + "\n" + "Костная масса: "
-								+ human.idealBoneMass() + " кг\n" + "Биологический возраст: не выше "
-								+ human.idealAge() + " лет\n" + "Мышечная масса: " + human.idealMuscle()
-								+ " кг\n" + "Вода в организме: " + human.idealWater() + "\n"
-								+ "---------------------------\n" + "Нормы для снижения веса\n" + "Вода: "
-								+ human.waterReduction() + " мл\n" + "Белок: "
-								+ human.proteinReduction() + " гр\n" + "Жир: "
-								+ human.fatReduction() + " гр\n" + "Углеводы: "
-								+ human.carbohydratesReduction() + " гр\n" + "Калории: "
-								+ human.kilocalorieReduction() + " гр\n"
-								+ "---------------------------\n" + "Нормы для контроля веса\n" + "Вода: "
-								+ human.waterControl() + " мл\n" + "Белок: "
-								+ human.proteinControl() + " гр\n" + "Жир: "
-								+ human.fatControl() + " гр\n" + "Углеводы: "
-								+ human.carbohydratesControl() + " гр\n" + "Ккалории: "
-								+ human.kilocalorieControl() + " гр\n"
-								+ "---------------------------\n" + "Программа для снижения веса: " + programReduction
-								+ "\n" + "Программа для контроля веса: " + programControl + "\n";
+						String result = 
+						        "ФИО: " + human.getName() + "\n"
+						        + "Пол: " + human.getGender() + "\n"
+								+ "Возраст: " + human.getAge() + " лет\n" 
+						        + "Рост: " + human.getHeight() + " см\n"
+								+ "Костная система: " + human.getBoneStructure() + "\n" 
+						        + "Вес: " + human.getWeight() + " кг\n" 
+								+ "Индекс массы тела: " + human.indexMassBody() + "\n"
+								+ "---------------------------\n" 
+								+ "Идеальные параметры:\n" 
+								+ "Вес: " + human.idealWeight() + " кг\n" 
+								+ "Жир: " + human.idealFat() + " %" + "\n"
+								+ "Внутренний жир: " + human.idealInternalFat() + "\n" 
+								+ "Костная масса: " + human.idealBoneMass() + " кг\n" 
+								+ "Биологический возраст: не выше " + human.idealAge() + " лет\n" 
+								+ "Мышечная масса: " + human.idealMuscle() + " кг\n" 
+								+ "Вода в организме: " + human.idealWater() + "\n"
+								+ "---------------------------\n" 
+								+ "Нормы для снижения веса\n" 
+								+ "Вода: " + human.waterReduction() + " мл\n" 
+								+ "Белок: " + human.proteinReduction() + " гр\n"
+								+ "Жир: " + human.fatReduction() + " гр\n" 
+								+ "Углеводы: " + human.carbohydratesReduction() + " гр\n" 
+								+ "Калории: " + human.kilocalorieReduction() + " гр\n"
+								+ "---------------------------\n" 
+								+ "Нормы для контроля веса\n" 
+								+ "Вода: " + human.waterControl() + " мл\n" 
+								+ "Белок: " + human.proteinControl() + " гр\n" 
+								+ "Жир: " + human.fatControl() + " гр\n" 
+								+ "Углеводы: " + human.carbohydratesControl() + " гр\n" 
+								+ "Ккалории: " + human.kilocalorieControl() + " гр\n"
+								+ "---------------------------\n" 
+								+ "Программа для снижения веса: " + programReduction + "\n" 
+								+ "Программа для контроля веса: " + programControl + "\n";
 
 						resultLabel.setText(result);
 
@@ -278,53 +280,85 @@ public class IdealBodyView extends Application {
 						btnRecommendation.setOnAction(new EventHandler<ActionEvent>() {
 
 							public void handle(ActionEvent event) {
-								///
 								programReduction = human.programReductionWeight();
 								programControl = human.programControlWeight();
-								///
+
 								switch(programReduction) {
 								case 'A':
 									planReduction = new Text("		A\n");
 									planReductionProducts = new Text(
-											" Формула 1 и Формула 2\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1 и Формула 2\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planReductionEnjoy = new Text(
-											" 2 коктейля\n 1 здоровый перекус\n 1 прием пищи\n");
+											" 2 коктейля\n "
+											+ "1 здоровый перекус\n "
+											+ "1 прием пищи\n");
 									planReductionProtein = new Text(" < 75 граммов\n");
 									planReductionCallories = new Text(" 1200 ккал\n");
 									break;
 								case 'B':
 									planReduction = new Text("		B\n");
 									planReductionProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planReductionEnjoy = new Text(
-											" 2 коктейля\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 1 здоровый перекус\n 1 прием пищи\n");
+											" 2 коктейля\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "1 здоровый перекус\n 1 прием пищи\n");
 									planReductionProtein = new Text(" 75-100 граммов\n");
 									planReductionCallories = new Text(" 1200-1300 ккал\n");
 									break;
 								case 'C':
 									planReduction = new Text("		C\n");
 									planReductionProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planReductionEnjoy = new Text(
-											" 2 коктейля\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 2 здоровых перекуса\n 1 прием пищи\n");
+											" 2 коктейля\n Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "2 здоровых перекуса\n "
+											+ "1 прием пищи\n");
 									planReductionProtein = new Text(" 100-125 граммов\n");
 									planReductionCallories = new Text(" 1300-1500 ккал\n");
 									break;
 								case 'D':
 									planReduction = new Text("		D\n");
 									planReductionProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planReductionEnjoy = new Text(
-											" 2 коктейля\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 3 здоровых перекуса\n 1 прием пищи\n");
+											" 2 коктейля\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "3 здоровых перекуса\n "
+											+ "1 прием пищи\n");
 									planReductionProtein = new Text(" 125-150 граммов\n");
 									planReductionCallories = new Text(" 1500-1700 ккал\n");
 									break;
 								case 'E':
 									planReduction = new Text("		E\n");
 									planReductionProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planReductionEnjoy = new Text(
-											" 2 коктейля\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 4 здоровых перекуса\n 1 прием пищи\n");
+											" 2 коктейля\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "4 здоровых перекуса\n "
+											+ "1 прием пищи\n");
 									planReductionProtein = new Text(" < 150 граммов\n");
 									planReductionCallories = new Text(" 1700-2000 ккал\n");
 								}
@@ -333,44 +367,78 @@ public class IdealBodyView extends Application {
 								case 'F':
 									planControl = new Text("		F\n");
 									planControlProducts = new Text(
-											" Формула 1 и Формула 2\n Продукты Herbalife для оптимизации\n контроля веса\n Продукты Herbalife для целевого питания\n");
-									planControlEnjoy = new Text("1 коктейль\n2 приема пищи\n");
+											" Формула 1 и Формула 2\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Продукты Herbalife для целевого питания\n");
+									planControlEnjoy = new Text("1 коктейль\n"
+									        + "2 приема пищи\n");
 									planControlProtein = new Text(" < 75 граммов\n");
 									planControlCallories = new Text(" 1300-1400 ккал\n");
 									break;
 								case 'G':
 									planControl = new Text("		G\n");
 									planControlProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planControlEnjoy = new Text(
-											" 1 коктейль\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 1 здоровый перекус\n 2 приема пищи\n");
+											" 1 коктейль\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "1 здоровый перекус\n "
+											+ "2 приема пищи\n");
 									planControlProtein = new Text(" 75-100 граммов\n");
 									planControlCallories = new Text(" 1400-1600 ккал\n");
 									break;
 								case 'H':
 									planControl = new Text("		H\n");
 									planControlProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planControlEnjoy = new Text(
-											" 1 коктейль\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 2 здоровых перекуса\n 2 приема пищи\n");
+											" 1 коктейль\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "2 здоровых перекуса\n 2 приема пищи\n");
 									planControlProtein = new Text(" 100-125 граммов\n");
 									planControlCallories = new Text(" 1600-1800 ккал\n");
 									break;
 								case 'I':
 									planControl = new Text("		I\n");
 									planControlProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planControlEnjoy = new Text(
-											" 1 коктейль\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 3 здоровых перекуса\n 2 приема пищи\n");
+											" 1 коктейль\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "3 здоровых перекуса\n "
+											+ "2 приема пищи\n");
 									planControlProtein = new Text(" 125-150 граммов\n");
 									planControlCallories = new Text(" 1800-2000 ккал\n");
 									break;
 								case 'J':
 									planControl = new Text("		J\n");
 									planControlProducts = new Text(
-											" Формула 1, 2 и 3/Протеиновая смесь\n Продукты Herbalife для оптимизации\n контроля веса\n Здоровый перекус.\n Продукты Herbalife для целевого питания");
+											" Формула 1, 2 и 3/Протеиновая смесь\n "
+											+ "Продукты Herbalife для оптимизации\n "
+											+ "контроля веса\n "
+											+ "Здоровый перекус.\n "
+											+ "Продукты Herbalife для целевого питания");
 									planControlEnjoy = new Text(
-											" 1 коктейль\n Рекомендуемое количество\n Формулы 3/Протеиновой смеси\n 4 здоровых перекуса\n 2 приема пищи\n");
+											" 1 коктейль\n "
+											+ "Рекомендуемое количество\n "
+											+ "Формулы 3/Протеиновой смеси\n "
+											+ "4 здоровых перекуса\n "
+											+ "2 приема пищи\n");
 									planControlProtein = new Text(" < 150 граммов\n");
 									planControlCallories = new Text(" 2000-2200 ккал\n");
 									break;
@@ -405,23 +473,13 @@ public class IdealBodyView extends Application {
 								gridPane.add(callories, 4, 1);
 								gridPane.add(planReductionCallories, 4, 2);
 								gridPane.add(planControlCallories, 4, 4);
-								// gridPane.add(btnExit, 4, 5);
 
 								gridScene = new Scene(gridPane);
 								myStage.setTitle("Рекомендации");
 								myStage.setScene(gridScene);
 								myStage.centerOnScreen();
 								myStage.show();
-								// btnExit.setOnAction(new
-								// EventHandler<ActionEvent>() {
-								// @Override
-								// public void handle(ActionEvent event) {
-								// Platform.exit();
-								// }
-								// });
-
 							}
-
 						});
 
 						myStage.setScene(resultScene);
@@ -457,7 +515,7 @@ public class IdealBodyView extends Application {
 				return false;
 			}
 		} catch (NumberFormatException e) {
-			// try again
+			e.getMessage();
 		}
 		return true;
 	}
@@ -483,7 +541,7 @@ public class IdealBodyView extends Application {
 				}
 			}
 		} catch (NumberFormatException e) {
-			// try again
+			e.getMessage();
 		}
 		return true;
 	}
@@ -498,7 +556,7 @@ public class IdealBodyView extends Application {
 				return false;
 			}
 		} catch (NumberFormatException e) {
-			// try again
+			e.getMessage();
 		}
 		return true;
 	}
@@ -515,4 +573,4 @@ public class IdealBodyView extends Application {
 			return true;
 		}
 	}
-}
+} 
